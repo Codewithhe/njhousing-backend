@@ -5,8 +5,8 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "craftaar0@gmail.com", // Get email from .env file
-    pass: "ynhm jojr cvpw bltd", // Get password from .env file
+    user: "shivams905@gmail.com", // Get email from .env file
+    pass: "ilww shef vlnr vezf", // Get password from .env file
   },
   port: 567,
 });
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 // Send OTP email
 const sendOtpEmail = (email, otp) => {
   const mailOptions = {
-    from: "craftaar0@gmail.com",
+    from: "shivams905@gmail.com",
     to: email,
     subject: "Your OTP Code",
     text: `Your OTP for registration is: ${otp}`,
