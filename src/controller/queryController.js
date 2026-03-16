@@ -115,34 +115,14 @@ exports.submitQuery = async (req, res) => {
 			yearly: !!yearly,
 		});
 
-  try {
-    const newQuery = new ContactQuery({
-      property,
-      firstName,
-      lastName,
-      email,
-      phone,
-      dob: new Date(dob), // ensure proper Date format
-      disabled: !!disabled,
-      income,
-      rent,
-      veteran: !!veteran,
-      signature,
-      referral,
-    });
+		await newQuery.save();
 
-    await newQuery.save();
-
-    return res.status(200).json({ message: 'Query submitted successfully.' });
-  } catch (error) {
-    console.error('Error submitting query:', error);
-    return res.status(500).json({ message: 'Server error. Please try again.' });
-  }
-}catch (error) {
-    console.error('Error submitting query:', error);
-    return res.status(500).json({ message: 'Server error. Please try again.' });
-  }
-}
+		return res.status(200).json({ message: 'Query submitted successfully.' });
+	} catch (error) {
+		console.error('Error submitting query:', error);
+		return res.status(500).json({ message: 'Server error. Please try again.' });
+	}
+};
 
 
 
